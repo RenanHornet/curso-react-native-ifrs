@@ -1,22 +1,38 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { View, Text } from 'react-native';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import Saudacao from './src/Modulo2/Modulo2_1_2';
+import React, { useState } from 'react';
+import { View, Text, Button, StyleSheet } from 'react-native';
 
-function Caixa({ children }) {
+function App() {
+      const [usuario, setUsuario] = useState({
+        nome: 'João',
+        idade: 25,
+        cidade: 'São Paulo',
+      });
+      const atualizarCidade = () => {
+        setUsuario((prevUsuario) => ({
+          ...prevUsuario, // Preserva as outras propriedades do estado
+          cidade: 'Rio de Janeiro', // Atualiza apenas a cidade
+        }));
+      };
+    
+    
       return (
-        <View style={{ padding: 10, borderWidth: 1, borderColor: 'black' }}>
-          {children}
+        <View style={styles.container}>
+          <Text style={styles.text}>Nome: {usuario.nome}</Text>
+          <Text style={styles.text}>Idade: {usuario.idade}</Text>
+          <Text style={styles.text}>Cidade: {usuario.cidade}</Text>
+          <Button title="Mudar Cidade" onPress={atualizarCidade} color="#841584" />
         </View>
       );
-    }
-    // Uso do componente Caixa
-    function App() {
-      return (
-        <Caixa>
-          <Text>Este é um conteúdo dentro da caixa.</Text>
-        </Caixa>
-      );
-    }
-    export default App;
+}
+    
+const styles = StyleSheet.create({
+      container: {
+        padding: 20,
+        alignItems: 'flex-start',
+      },
+      text: {
+        fontSize: 16,
+        marginBottom: 5,
+      },
+});
+export default App;
