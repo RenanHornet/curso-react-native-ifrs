@@ -1,0 +1,24 @@
+=== Navegação em React Native ===
+A navegação em um aplicativo móvel refere-se à forma como os usuários se entre diferentes telas ou seções dentro do aplicativo. Logo, a navegação em aplicativos React Native é um aspecto essencial para a construção de aplicativos com múltiplas telas, proporcionando uma experiência de usuário suave e intuitiva (BOWMAN, 2022; WILKINS, 2023).
+
+O React Native, por padrão, não inclui uma solução de navegação, o que faz com que os desenvolvedores precisem recorrer a bibliotecas externas para gerenciar transições de tela, navegação entre pilhas de telas, menus de abas e outros padrões comuns (CHESTER, 2020).
+
+Algumas vantagens de usar bibliotecas de navegação incluem:
+- Gestão de histórico de navegação;
+- transições e animações personalizadas;
+- Facilidade na implementação de menus de abas e navegadores laterais;
+- Suporte a parâmetros de navegação e rotas dinâmicas.
+
+Existem várias bibliotecas que ajudam a implementar a navegação. Dentre as bibliotecas de navegação mais comuns, podemos citar:
+
+*- Navigation:* É a biblioteca mais usada para navegação em aplicativos React Native. Ela oferece suporte para navegação em pilha, abas, drawer(gaveta lateral), entre outras;
+
+*-React Native Navigation (da Wix):* Uma alternativa popular que fornece uma abordagem mais nativa para a navegação, resultando em uma performance potencialmente melhor em alguns casos. 
+
+*- React Router Native:* Para desenvolvedores familiarizados com React Router para web, esta biblioteca traz conceitos semelhantes ao ambiente móvel. 
+
+*-Native Navigation:* Criada pela Airbnb, projetada para navegação nativa com a simplicidade do React.
+
+*-Expo Router:* Parte da plataforma Expo, projetada para navegação baseada em arquivos, facilitando a configuração e organização de projetos em React Native.
+
+A escolha da biblioteca de navegação depende das necessidades do projetos e da preferência do desenvolvedor. neste contexto, em nossos projetos deste cutso, vamos aprofundar nossos conhecimentos sobre a React Navigation. 

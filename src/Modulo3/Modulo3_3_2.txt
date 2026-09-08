@@ -1,0 +1,88 @@
+=== Implementação do Stack Navigation com React Navigation ===
+
+No React Native, uma das bibliotecas mais populares para navegação é a React Navigation, que oferece o Stack Navigation para criar esse tipo de navegação.
+
+=-=-= Instalação do Pacote de Navegação. =-=-=
+Primeiramente, precisamos instalar os pacotes necessários para o gerenciador de navegação escolhido (por exemplo, stack, tab, etc.). Neste caso, optamos pela navegação em pilha. Logo, instale o pacote específico conforme abaixo:
+
+npm install @react-navigation/stack
+
+=-=-= 0Configuração do Container de Navegação =-=-=
+O NavigationContainer é um provedor de contexto que encapsula a lógica de navegação e mantém o estado da navegação. Ele age como um "contêiner raiz" para o sistema de navegação do aplicativo. Sem ele, as rotas definidas na aplicação não funcionam, pois ele fornece as informações necessárias para controlar as rotas e a navegação entre as telas.
+
+Desta forma, no arquivo principal do seu projeto (geralmente App.js), você precisa configurar a navegação e incluir um contêiner de navegação:
+
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomeScreen from './screens/HomeScreen';
+import DetailsScreen from './screens/DetailsScreen';
+const Stack = createStackNavigator();
+function App() {
+      return (
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Details" component={DetailsScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      );
+}
+export default App;
+
+Esse código configura a estrutura de navegação de um aplicativo utilizando a biblioteca @react-navigation/stack. Inicialmente, a biblioteca React é importada para possibilitar a criação de componentes funcionais. O componente NavigationContainer, importado de @react-navigation/native, serve como o contêiner que envolve toda a aplicação, permitindo que a navegação funcione corretamente ao gerenciar o estado de navegação. A função createStackNavigator, importada de @react-navigation/stack, é usada para criar um navegador de pilha, que permite a navegação entre diferentes telas de forma empilhada.
+
+Em seguida, os componentes HomeScreen e DetailsScreen são importados de arquivos externos e representam as diferentes telas que o aplicativo exibirá. O Stack é instanciado e utilizado no componente App, onde NavigationContainer envolve o Stack.Navigator. O Stack.Navigator define a estrutura de navegação e, com a propriedade initialRouteName, especifica que a tela inicial será a HomeScreen. As telas HomeScreen e DetailsScreen são adicionadas ao navegador usando Stack.Screen, com o nome da rota e o componente correspondente.
+
+
+
+Criando Telas Simples
+Agora, vamos criar duas telas básicas para ilustrar a navegação. Para isso, crie um diretório chamado “screens” em seu projeto.
+
+Dentro da pasta screens, crie um arquivo chamado HomeScreen.js com este código:
+
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+
+function HomeScreen({ navigation }) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Home Screen</Text>
+          <Button
+            title="Go to Details"
+            onPress={() => navigation.navigate('Details')}
+          />
+        </View>
+      );
+}
+export default HomeScreen;
+    
+
+
+Este código define um componente chamado HomeScreen, que representa uma tela inicial em um aplicativo móvel. Primeiro, a biblioteca React é importada para permitir a criação de componentes funcionais. Em seguida, os componentes View, Text e Button são importados da biblioteca react-native para construir a interface do usuário.
+
+O componente HomeScreen recebe uma prop navigation, que é passada automaticamente pelo React Navigation e permite que o componente manipule a navegação entre as telas. Dentro do componente, uma View é usada como contêiner com estilo flexível para centralizar seu conteúdo, tanto horizontal quanto verticalmente, usando as propriedades justifyContent e alignItems.
+
+Dentro dessa View, um componente Text exibe o texto "Home Screen". Logo abaixo, um componente Button é renderizado com a propriedade title definida como "Go to Details". Quando o botão é pressionado, a função onPress é chamada, e o método navigation.navigate('Details') é executado, direcionando o usuário para a tela chamada 'Details', que deve estar configurada no navegador de pilha do aplicativo.
+
+Em seguida, dentro da pasta screens, crie um arquivo chamado DetailsScreen.js com este código:
+
+import React from "react";
+import { View, Text, Button } from "react-native";
+function DetailsScreen({ navigation }) {
+      return (
+        <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+          <Text>Details Screen</Text>
+          <Button title="Go to Home" onPress={() => navigation.navigate("Home")} />
+        </View>
+      );
+}
+export default DetailsScreen;
+    
+
+
+Este código em React Native define um componente funcional chamado DetailsScreen, que representa uma tela de detalhes em um aplicativo móvel. Primeiramente, a biblioteca React é importada para permitir a criação do componente, e os componentes View, Text e Button são importados da biblioteca react-native para compor a interface de usuário.
+
+O componente DetailsScreen recebe uma prop navigation, que é fornecida pelo React Navigation e permite que o componente controle a navegação entre as telas. Dentro do componente, uma View é usada como contêiner principal, com as propriedades flex: 1, justifyContent: "center" e alignItems: "center" para centralizar seu conteúdo de forma flexível na tela, tanto horizontal quanto verticalmente.
+
+Dentro da View, há um componente Text que exibe o texto "Details Screen". Logo abaixo, um componente Button é incluído, com a propriedade title definida como "Go to Home". A função onPress do botão é acionada quando o usuário pressiona o botão, e executa navigation.navigate("Home"), o que faz a navegação para a tela chamada 'Home', que deve estar configurada no navegador de pilha do aplicativo.

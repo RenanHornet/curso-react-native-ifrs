@@ -1,0 +1,3 @@
+=== Introdução ao Stack Navigation === 
+
+O Stack Navigation (ou navegação em pilha) é um padrão de navegação muito comum em pilhas móveis, incluindo os criados com React Native (MEIER, 2020; NEIL, 2012). Esse tipo de navegação se assemelha ao comportamento de uma pilha (estrutura de dados), onde as telas são empilhadas umas sobre as outras, e a navegação entre elas segue a lógica de empilhar e desempilhar elementos.

@@ -1,0 +1,17 @@
+=== Como funciona o Stack Navigation === 
+
+Imagine um aplicativo com várias telas. Quando o usuário navega de uma tela para outra, a nova tela é "empilhada sobre a atual. Ao pressionar o botão de voltar (ou uma ação similar), a tela superior é "desempilhada", revelando a tela imediatamente anterior. Esse comportamento imita a navegação de páginas em um navegador da web, onde você avança e volta no histórico. Neste contexto, cabe ressaltar o funcionamento de uma pilha:
+
+*- Push(Empilhar):* Quando o usuário nevega para uma nova tela, essa tela é colocada no topo da pilha.
+
+*- Pop(Desempilhar):* Quando o usuário retorna, a tela superior é removida, e a tela anterior volta a ser visível. 
+
+Dentre as características do Stack Navigation, podemos destacar (TILTON, 2022):
+
+*- Histórico de navegação:* O Stack Navigation mantém um histórico das telas percorridas, permitindo que o usuário volte à tela anterior. 
+
+*- Transição de tela:* Pode incluir transições visuais ao mudar de uma tela para outra, como animações de deslizamento. 
+
+*- Passagem de parâmetros:* É possível passar dados de uma tela para outra ao navegar. 
+
+*- Controle de navegação:* O desenvolvedor pode controlar o empilhamento e desempilhamento das telas, criando experiências de navegação personalizadas.

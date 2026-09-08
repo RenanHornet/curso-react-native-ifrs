@@ -1,0 +1,133 @@
+=== Implementação do Tab Navigation com React Navigation ===
+
+No React Native, uma das bibliotecas mais populares para navegação é a React Navigation, que oferece o Tab Navigator para criar esse tipo de navegação.
+
+=-=-= Instalação do Pacote de Navegação =-=-=
+Primeiramente, precisamos instalar os pacotes necessários para o gerenciador de navegação escolhido. Logo, instale o pacote específico conforme abaixo:
+
+npm install @react-navigation/bottom-tabs
+
+=-=-= Configuração básica do Tab Navigator =-=-=
+
+O Tab Navigator faz parte da biblioteca React Navigation e é comumente implementado através do pacote @react-navigation/bottom-tabs. Ele fornece uma maneira de organizar o conteúdo do aplicativo em diferentes telas, apresentadas como abas que podem ser tocadas pelo usuário. Dentre os principais componentes do Tab Navigator, podemos citar:
+
+Tab.Navigator: É o contêiner que encapsula todas as abas. Nele, você define propriedades de personalização, como a aparência das abas, o comportamento de transição, o estilo, etc.
+Tab.Screen: Representa uma única aba dentro do Tab.Navigator. É usado para mapear um nome de aba para um componente de tela específico.
+Para não termos conflito com as telas desenvolvidas anteriormente, vamos adicionar toda a lógica de programação no arquivo principal do seu projeto (geralmente App.js):
+
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { View, Text } from 'react-native';
+    
+const Tab = createBottomTabNavigator();
+    
+function HomeScreen() {
+      return (
+        <View>
+          <Text>Home Screen</Text>
+        </View>
+      );
+    }
+    function SettingsScreen() {
+      return (
+        <View>
+          <Text>Settings Screen</Text>
+        </View>
+      );
+}
+export default function App() {
+      return (
+        <NavigationContainer>
+          <Tab.Navigator>
+            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      );
+}
+    
+
+
+Este código configura nosso aplicativo com navegação por abas usando o Bottom Tab Navigator da biblioteca React Navigation. A aplicação começa com a importação de React para possibilitar a criação de componentes, além de componentes essenciais como NavigationContainer de @react-navigation/native e createBottomTabNavigator de @react-navigation/bottom-tabs, que são necessários para configurar a navegação de abas.
+
+Os componentes View e Text de react-native são usados para compor as interfaces de usuário das telas. O createBottomTabNavigator é chamado para instanciar o Tab, que servirá como base para a navegação por abas. Em seguida, são definidos dois componentes funcionais, HomeScreen e SettingsScreen, que retornam uma View contendo um Text que indica a tela correspondente. O componente principal App encapsula toda a estrutura da aplicação dentro do NavigationContainer, que gerencia o estado da navegação. O Tab.Navigator contém dois Tab.Screen, que mapeiam o nome da aba e o componente de tela correspondente.
+
+=-=-= Personalização das Abas =-=-=
+
+O Tab Navigation permite uma ampla personalização, como:
+
+Ícones personalizados: Adicionar ícones a cada aba para tornar a navegação mais intuitiva.
+Rótulos: Personalizar os textos exibidos nas abas.
+Estilo e aparência: Configurar cores, tamanhos e temas.
+Veja abaixo um exemplo de personalização das abas de nosso aplicativo:
+
+import * as React from 'react';
+    import { NavigationContainer } from '@react-navigation/native';
+    import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+    import { View, Text } from 'react-native';
+    import { Ionicons } from '@expo/vector-icons'; // Importar a biblioteca de ícones
+    
+    
+    const Tab = createBottomTabNavigator();
+    
+    
+    function HomeScreen() {
+      return (
+        <View>
+          <Text>Home Screen</Text>
+        </View>
+      );
+    }
+    function SettingsScreen() {
+      return (
+        <View>
+          <Text>Settings Screen</Text>
+        </View>
+      );
+    }
+    export default function App() {
+      return (
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
+    
+    
+                if (route.name === 'Home') {
+                  iconName = focused ? 'home' : 'home-outline';
+                } else if (route.name === 'Settings') {
+                  iconName = focused ? 'settings' : 'settings-outline';
+                }
+    
+    
+                // Retornar o ícone apropriado
+                return <Ionicons name={iconName} size={size} color={color} />;
+              },
+              tabBarActiveTintColor: 'tomato', // Cor das abas ativas
+              tabBarInactiveTintColor: 'gray', // Cor das abas inativas
+              tabBarStyle: {
+                backgroundColor: '#f0f0f0', // Cor de fundo da barra de abas
+                paddingBottom: 5, // Ajuste de espaçamento
+              },
+              tabBarLabelStyle: {
+                fontSize: 12, // Tamanho da fonte dos rótulos
+              },
+            })}
+          >
+            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Settings" component={SettingsScreen} />
+          </Tab.Navigator>
+        </NavigationContainer>
+      );
+    }
+    
+
+
+Dentre as personalizações feitas:
+
+Ícones: Utilizei a biblioteca Ionicons para exibir ícones diferentes dependendo da aba selecionada ou não.
+Estilo da barra de abas: Modifiquei a cor de fundo e o espaçamento da barra de navegação.
+Cores de abas: Diferenciei a cor das abas ativas (tabBarActiveTintColor) e inativas (tabBarInactiveTintColor).
+Estilo dos rótulos: Ajustei o tamanho da fonte dos rótulos (tabBarLabelStyle).

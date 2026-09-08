@@ -1,0 +1,68 @@
+=== Navegação entre Telas com Parâmetros ===
+
+A navegação entre telas com parâmetros em React Navigation permite que você passe dados de uma tela para outra durante a navegação. Essa funcionalidade é muito útil quando voce precisa compartilhar informações contextuais, como detalhes de um item selecionado, entre telas de um aplicativo. 
+
+=-=-= Passando Parâmetros de uma tela para outra =-=-=
+
+Para enviar parâmetros de uma tela, você pode usar o método navigate e passar um objeto de parâmetro junto com o nome da rota para a qual deseja navegar. 
+
+Vamos demonstrar a passagem de parâmetros alterando o arquivo HomeScreen.js:
+
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+
+function HomeScreen({ navigation }) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Home Screen</Text>
+          <Button
+            title="Go to Details"
+            onPress={() => navigation.navigate('Details', { itemId: 42, otherParam: 'Hello World' })}
+          />
+        </View>
+      );
+}
+export default HomeScreen;
+    
+
+
+Este código Native define um componente funcional chamado HomeScreen, que representa uma tela inicial em um aplicativo móvel. O componente HomeScreen recebe a prop navigation, que é passada automaticamente pelo React Navigation e permite a manipulação da navegação entre as telas. Dentro do componente, uma View é usada como contêiner principal, com as propriedades de estilo flex: 1, justifyContent: 'center' e alignItems: 'center' para garantir que seu conteúdo seja centralizado, tanto vertical quanto horizontalmente, na tela.
+
+Dentro dessa View, há um componente Text que exibe o texto "Home Screen". Logo abaixo, um componente Button é renderizado com a propriedade title definida como "Go to Details". Quando o botão é pressionado, a função onPress é chamada, acionando navigation.navigate('Details', { itemId: 42, otherParam: 'Hello World' }). Essa linha de código navega para a tela chamada 'Details' e, ao mesmo tempo, passa parâmetros para essa tela: um itemId com o valor 42 e um otherParam com o valor 'Hello World'.
+
+Esses parâmetros podem ser usados na tela 'Details' para exibir informações ou realizar ações específicas com base nos dados recebidos. Por fim, o componente HomeScreen é exportado como padrão, permitindo que ele seja importado e usado em outras partes do aplicativo.
+
+=-=-= Recebendo e usando os Parâmetros na tela de destino =-=-=
+
+Na tela de destino, os parâmetros podem ser acessados através da propriedade route, que é passada automaticamente para o componente pelo React Navigation.
+
+Vamos demonstrar a passagem de parâmetros alterando o arquivo DetailsScreen.js:
+
+import React from 'react';
+import { View, Text } from 'react-native';
+
+function DetailsScreen({ route, navigation }) {
+   // Desestrutura os parâmetros recebidos da rota
+   const { itemId, otherParam } = route.params;
+    
+    
+    return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Details Screen</Text>
+          <Text>Item ID: {itemId}</Text>
+          <Text>Other Param: {otherParam}</Text>
+        </View>
+      );
+}
+export default DetailsScreen;
+    
+
+
+Este código define um componente funcional chamado DetailsScreen, que representa uma tela de detalhes em um aplicativo móvel. O componente DetailsScreen recebe duas props: route e navigation. A prop route contém informações sobre a rota atual, incluindo os parâmetros passados para a tela. A prop navigation é usada para controlar a navegação entre telas, mas neste caso, é apenas mencionada sem ser usada.
+
+Dentro do corpo da função, os parâmetros passados para a rota são desestruturados da prop route.params, resultando nas variáveis itemId e otherParam. Essas variáveis representam os dados que foram enviados da tela anterior, permitindo que a DetailsScreen exiba informações personalizadas baseadas nesses parâmetros.
+
+O retorno da função renderiza uma View como contêiner principal, com estilo que a centraliza vertical e horizontalmente na tela (flex: 1, justifyContent: 'center', alignItems: 'center'). Dentro dessa View, há um componente Text que exibe "Details Screen", seguido por dois outros componentes Text que exibem os valores de itemId e otherParam, mostrando os dados recebidos.
+
+Veja o resultado destas alterações, clicando no botão “GO TO DETAILS”. Veja os dados que passamos por parâmetros na tela Details.
+

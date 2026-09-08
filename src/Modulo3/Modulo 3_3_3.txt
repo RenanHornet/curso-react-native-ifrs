@@ -1,0 +1,9 @@
+=== Testando nosso Aplicativo com React Navigation ===
+
+Agora podemos executar o projeto no seu dispositivo Android, IOS ou no navegador. Neste curso, vamos utilizar o navegador para mostrar a maioria das funcionalidades. Logo, digite o seguinte comando no terminal:
+
+npm run web
+
+
+Este comando inicia o servidor de desenvolvimento Expo e abre o projeto em um navegador da web. Assim, o navegador padrão do sistema será aberto automaticamente para mostrar a aplicação em execução.
+

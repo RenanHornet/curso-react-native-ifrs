@@ -1,0 +1,9 @@
+=== Como funciona o Tab Navigation ===
+
+O tab Navigation permite que o usuário navegue entre diferentes telas de um aplicativo de forma rápida e intuitiva, sem precisar voltar ou avançar em uma pilha de navegação (WILKINS, 2023; TILTON, 2022). As abas ficam visíveis o tempo todo, permitindo que o usuário saiba quais opções de navegação estão disponíveis e facilite a troca entre elas com um simples toque. 
+
+Existem dois tipos principais de Tab Navigation:
+
+*- Bottom Tab Navigation:* As abas estão posicionadas na parte inferior da tela, o que é mais comum em aplicativos móveis.
+
+*-Top Tab Navigation:* As abas ficam na parte superior da tela e, muitas vezes, são usadas em conjunto com um componente de navegação por deslizar (swipe), o que permite que o usuário troque de aba ao deslizar a tela para a esquerda ou direita.

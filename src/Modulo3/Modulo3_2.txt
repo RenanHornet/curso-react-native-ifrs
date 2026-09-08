@@ -1,0 +1,47 @@
+=== Introdução à biblioteca React Navigation === 
+A React Navigation é uma biblioteca popular no ecossistema React Native, usada para gerenciar a navegação em aplicativos móveis. Ela fornece uma solução flexível e extensível para gerenciar a navegação em aplicativos que têm múltiplas telas e fluxos complexos, possibilitando uma expriência de usuário intuitiva e fluída (GHOSHAL, 2021; JAMAL, 2021).
+
+Ela permite criar navegações simples e complexas, como:
+
+*-Navigator:* Ideal para navegação onde as telas são empilhadas uma sobre as outras, simulando a navegação entre páginas, como um navegador web. 
+
+*-Tab Navigator:* Utilizado para navegação com abas, permitindo que os usuários alternem entre diferentes telas de forma rápida e visualmente clara.
+
+*-Drawer Navigator:* Um menu deslizante que aparece do lado esquerdo (ou direito) da tela, comum em aplicativos que requerem uma navegação mais oculta.
+
+=-=-= Configuração Inicial do React Navigation =-=-=
+
+Criação de um Projeto React Native
+Para começar a usar a React Navigation, será melhor utilizarmos um projeto de exemplo. Neste contexto, caso você ainda não tenha criado um projeto antes, crie um novo projeto Expo, em um diretório específico de sua escolha.
+
+Para isso, no terminal do seu computador, digite o seguinte comando:
+
+npx create-expo-app@latest --template blank
+
+O comando npx create-expo-app@latest é usado para criar um novo projeto Expo com a versão mais recente do create-expo-app, que é uma ferramenta de inicialização (scaffolding) de projetos Expo. A opção blank cria um projeto básico sem bibliotecas adicionais. Ainda, durante a execução deste comando, você será solicitado para informar o nome do seu projeto. Neste caso, informe o nome “my-app”.
+
+Este processo de configuração inicial do projeto leva alguns segundos. Agora, digite o seguinte comando no terminal para entrar no diretório recém criado do nosso projeto, conforme quadro abaixo:
+
+cd my-app
+
+
+Agora, vamos instalar algumas bibliotecas básicas para o nosso projeto:
+
+npm install react-dom@18.3.1 react-native-web@~0.19.13 @expo/metro-runtime@~4.0.0
+
+
+Você pode, agora, abrir a aplicação no editor Visual Studio Code. Para isso, dentro do diretório my-app digite o seguinte comando no terminal:
+
+code .
+
+
+
+Instalação da Biblioteca
+Para começar a usar a React Navigation em um projeto React Native, você precisa instalar a biblioteca e suas dependências essenciais:
+
+npm install @react-navigation/native
+
+
+Após instalar a biblioteca principal, é necessário instalar as dependências adicionais:
+
+npm install react-native-screens react-native-safe-area-context

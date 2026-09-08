@@ -1,0 +1,3 @@
+=== Introdução ao Tab Navigation ===
+
+O Tab Navigation (ou navegação por abas) é um padrão de navegação amplamente utilizado em aplicativos móveis, em que o usuário pode alternar entre diferentes seções ou telas de um aplicativo através de um conjunto de abas fixas geralmente posicionadas na parte inferior (ou, às vezes, na parte superior) da tela (BOWMAN, 2022). esse padrão é muito popular em aplicativos como Instagram, X e muitos outros, pois facilita o acesso rápido a diferentes funcionalidades.
