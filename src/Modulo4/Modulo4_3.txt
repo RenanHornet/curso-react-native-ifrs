@@ -1,0 +1,104 @@
+=== Indicador de carregamento (Loading) =-=-=
+
+Um indicador de carregamento (Loading) é um componente visual que informa aos usuários que uma operação assíncrona, como uma consulta a uma API, está em andamento. Em aplicações React Native, isso é especialmente importante ao buscar dados de APIs, pois pode levar algum tempo para que os dados sejam retornados. Um bom feedback ao usuário melhora a experiência e evita que ele fique confuso ou pense que a aplicação não está funcionando.
+
+Veja no quadro abaixo um exemplo de uso de indicador de carregamento:
+
+import React, { useState, useEffect } from "react";
+import {View,Text,FlatList,ActivityIndicator,StyleSheet} from "react-native";
+import axios from "axios";
+
+import React, { useState, useEffect } from "react";
+import {View,Text,FlatList,ActivityIndicator,StyleSheet} from "react-native";
+import axios from "axios";
+
+export default function App() {
+      const [usuarios, setUsuarios] = useState([]);
+      const [loading, setLoading] = useState(true); // Estado de carregamento
+      const [error, setError] = useState(null);
+      useEffect(() => {
+        const fetchUsuarios = async () => {
+          try {
+            const response = await axios.get(
+              "https://jsonplaceholder.typicode.com/users"
+            );
+            setUsuarios(response.data);
+          } catch (error) {
+            console.error("Erro ao carregar usuários:", error);
+            setError("Erro ao carregar usuários.");
+          } finally {
+            setLoading(false); // Atualiza o estado de carregamento para false
+          }
+        };
+        fetchUsuarios();
+      }, []);
+      if (loading) {
+        return (
+          <View style={styles.container}>
+            <ActivityIndicator size="large" color="#0000ff" />
+            <Text style={styles.loading}>Carregando...</Text>
+          </View>
+        );
+      }
+      if (error) {
+        return (
+          <View style={styles.container}>
+            <Text style={styles.error}>{error}</Text>
+          </View>
+        );
+      }
+      return (
+        <View style={styles.container}>
+          <Text style={styles.title}>Lista de Usuários</Text>
+          <FlatList
+            data={usuarios}
+            keyExtractor={(item) => item.id.toString()} // Gera uma chave única 
+            renderItem={({ item }) => (
+              <Text style={styles.item}>{item.name}</Text>
+            )}
+          />
+        </View>
+      );
+}
+const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        padding: 16,
+        backgroundColor: "#f5f5f5",
+      },
+      loading: {
+        marginTop: 10,
+        fontSize: 18,
+        color: "#555",
+      },
+      error: {
+        color: "red",
+        fontSize: 16,
+        textAlign: "center",
+      },
+      title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginBottom: 10,
+        textAlign: "center",
+      },
+      item: {
+        fontSize: 18,
+        padding: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: "#ccc",
+      },
+});
+    
+Observe neste código:
+
+    -Estado loading: Um estado loading é criado para controlar se os dados estão sendo carregados.
+
+    -Atualização do Estado: O estado loading é definido como true antes da chamada da API. No bloco finally, independentemente do sucesso ou falha da requisição, o estado é atualizado para false, indicando que o carregamento foi concluído.
+
+Renderização Condicional:
+    -Enquanto loading for true, a mensagem "Carregando..." é exibida.
+
+    -Se ocorrer um erro, a mensagem de erro é exibida.
+    
+    -Se os dados forem carregados com sucesso, são renderizados na lista.
