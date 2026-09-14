@@ -1,0 +1,226 @@
+=== Operações com os outros métodos HTTP usando Axios ===
+
+Ao desenvolver aplicações mobile com React Native ou outras tecnologias, o uso de métodos HTTP é essencial para realizar operações de manipulação de dados em APIs (CHESTER, 2020; WILKINS, 2023). Os métodos mais comuns são GET, POST, PUT e DELETE, que permitem buscar, criar, atualizar e excluir dados em um servidor. Vamos explorar estes métodos, mostrando exemplos práticos.
+
+=-=-= GET =-=-=
+O método GET é utilizado para buscar dados de um servidor. Ele é usado quando precisamos obter informações de uma API sem modificar nenhum dado. As requisições GET são idempotentes, ou seja, podem ser chamadas repetidamente sem alterar o estado do recurso no servidor. Os dados solicitados são passados na URL como parâmetros de consulta (query parameters), se necessário. Por exemplo: "https://jsonplaceholder.typicode.com/posts/10"
+
+Veja abaixo um exemplo de uso do método GET com Axios passando um parâmetro que identifica que estamos solicitando desta API um “post” que tenha o id = 10:
+
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import axios from "axios";
+function App() {
+      // Função assíncrona para fazer a requisição usando Axios com o método GET
+      const buscarDados = async () => {
+        try {
+          // Adiciona o parâmetro `10` na URL
+          const response = await axios.get(
+            "https://jsonplaceholder.typicode.com/posts/10"
+          );
+          console.log("Dados recebidos:", response.data); // Exibe os dados 
+        } catch (error) {
+          console.error("Erro na requisição:", error); // Exibe erros no console
+        }
+      };
+    
+    
+      buscarDados(); // Chama a função ao montar o componente
+    
+    
+      return (
+        <View style={styles.container}>
+          <Text style={styles.title}>GET com Axios - Verifique o Console</Text>
+        </View>
+      );
+    }
+    const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f5f5f5",
+      },
+      title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
+      },
+});
+export default App;
+
+Observe neste código:
+    Axios automaticamente lida com a configuração da requisição e a transformação da resposta em JSON, eliminando a necessidade de verificar manualmente e converter a resposta.
+
+    Com Axios, não precisamos configurar manualmente o método HTTP ou transformar a resposta para JSON usando response.json().
+
+    Os dados retornados são diretamente acessíveis em response.data.
+
+=-=-= POST =-=-=
+O método POST é utilizado para enviar dados para o servidor, geralmente para criar novos recursos. Ele é utilizado quando precisamos submeter informações, como enviar um formulário de cadastro. Diferente do GET, o POST não é idempotente, pois cada requisição pode criar um novo recurso. Os dados são enviados no corpo da requisição, não na URL.
+
+Veja abaixo um exemplo de uso do método POST com Axios:
+
+import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import axios from 'axios';
+    
+function App() {
+      // Função assíncrona para fazer a requisição usando Axios
+      const criarRecurso = async () => {
+        try {
+          const response = await axios.post(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+              title: "Novo Item",
+              body: "Descrição do item",
+              userId: 1,
+            }
+          );
+          console.log("Recurso criado:", response.data); // Exibe os dados
+        } catch (error) {
+          console.error("Erro na requisição:", error); // Exibe erros no console
+        }
+      };
+    
+    
+      criarRecurso(); // Chama a função ao montar o componente
+    
+    
+      return (
+        <View style={styles.container}>
+          <Text style={styles.title}>POST com Axios - Verifique o Console</Text>
+        </View>
+      );
+}
+   
+const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#f5f5f5',
+      },
+      title: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+});
+export default App;
+    
+Observe neste código:
+
+    -A função assíncrona criarRecurso envia um objeto com as propriedades title, body, e userId para a API.
+
+    -Se a requisição for bem-sucedida, o objeto retornado pela API (response.data) é exibido no console.
+
+    -Em caso de erro, a mensagem do erro é exibida no console.
+
+=-=-= PUT =-=-=
+O método PUT é usado para atualizar um recurso existente no servidor. Ele substitui completamente o recurso com os dados fornecidos. Assim como GET, PUT é idempotente, o que significa que enviar a mesma requisição várias vezes resulta no mesmo estado. Ele requer que os dados sejam enviados no corpo da requisição.
+
+Veja abaixo um exemplo de uso do método PUT com Axios:
+
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import axios from "axios";
+    
+function App() {
+      // Função assíncrona para fazer a requisição usando Axios com o método PUT
+      const atualizarRecurso = async () => {
+        try {
+          const response = await axios.put(
+            "https://jsonplaceholder.typicode.com/posts/1",
+            {
+              title: "Item Atualizado",
+              body: "Descrição do item atualizada",
+              userId: 1,
+            }
+          );
+          console.log("Recurso atualizado:", response.data); // Exibe os dados
+        } catch (error) {
+          console.error("Erro na requisição:", error); // Exibe erros no console
+        }
+      };
+    
+    
+      atualizarRecurso(); // Chama a função ao montar o componente
+    
+    
+      return (
+        <View style={styles.container}>
+          <Text style={styles.title}>PUT com Axios - Verifique o Console</Text>
+        </View>
+      );
+}
+    
+const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f5f5f5",
+      },
+      title: {
+        fontSize: 24,
+        fontWeight: "bold",
+        textAlign: "center",
+      },
+});
+export default App;
+
+Observe neste código:
+    -A função atualizarRecurso envia uma requisição PUT para atualizar o recurso com o ID 1. Assim, ela envia um objeto JSON contendo os campos title, body, e userId no corpo da requisição.
+
+    -O resultado da operação (response.data) é exibido no console.
+    -Em caso de erro, exibe a mensagem no console.
+
+=-=-= DELETE =-=-=
+ método DELETE é utilizado para remover um recurso no servidor. O DELETE também é idempotente, o que significa que múltiplas chamadas para o mesmo recurso resultam no mesmo efeito — a remoção do recurso. Normalmente, não requer um corpo na requisição.
+
+ Veja abaixo um exemplo de uso do método DELETE com Axios:
+ import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import axios from "axios";
+    
+export default function App() {
+      // Função assíncrona para fazer a requisição usando Axios com o método DELETE
+      const removerRecurso = async () => {
+        try {
+          const response = await axios.delete(
+            "https://jsonplaceholder.typicode.com/posts/1"
+          );
+          console.log("Recurso removido com sucesso");
+        } catch (error) {
+          console.error("Erro ao remover o recurso:", error);
+        }
+      };
+      // Chama a função automaticamente ao montar o componente
+      removerRecurso();
+     
+     return (
+        <View style={styles.container}>
+          <Text style={styles.title}>DELETE com Axios - Verifique o Console</Text>
+        </View>
+      );
+}
+const styles = StyleSheet.create({
+      container: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#f5f5f5",
+      },
+      title: {
+        fontSize: 20,
+        fontWeight: "bold",
+      },
+});
+
+Observe neste código:
+    -A função removerRecurso realiza uma requisição DELETE para a URL especificada.
+
+    -Em caso de sucesso, exibe no console a mensagem: "Recurso removido com sucesso".
+    
+    -Em caso de erro, exibe no console: "Erro ao remover o recurso:", seguido dos detalhes do erro.

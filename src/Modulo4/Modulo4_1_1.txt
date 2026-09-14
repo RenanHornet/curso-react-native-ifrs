@@ -1,0 +1,48 @@
+=== O que são APIs? ===
+
+APIs (Application Programmin Interfaces) são conjuntos de regras e protocolos que permitem a comnunicação entre diferentes softwares ou sistemas. Em termos simples, uma API funciona como uma interface que possibilita que diferentes aplicações interajam e troquem informações entre si (GHOSHAL, 2021).
+
+As APIs permitem que os desenvolvedores usem funcionalidades de outros serviços ou softwares sem precisar saber como eles são implementados internamente. Por exemplo, quando você usa um aplicativo de clima no seu celular, ele provavelmente está consumindo dados de uma API para mostrar as previsões meteorológicas. O aplicativo envia uma requisição para uma API que fornece informações sobre o clima e recebe de volta os dados necessários para exibir ao usuário. 
+
+Neste contexto, a integração com APIs é crucial para obter dados dinâmicos de servidores e utilizá-los em aplicações React, permitindo criar interfaces mais interativas e conectadas a fontes de dados externas (JAMAL, 2021).
+
+=-=-= Abordagens mais usadas parea APIs =-=-=
+Existem várias abordagens para construir e utilizar APIs, cada uma com suas próprias características, vantagens e casos de uso. As abordagensmais comuns são:
+
+*-APIs RESTful:* o REST (Representational State Transfer) é um estilo de arquitetura que utiliza padrões HTTP para comunicação entre sistemas. É uma das abordagens mais populares e amplamente utilizadas para construção de APIs. APIs RESTful são amplamente usadas em aplicações web e móveis para integração de dados e comunicação com back-ends.
+
+*-GraphQL:* é uma linguagem de consulta para APIs desenvolvida pelo Facebook que permite ao cliente solicitar exatamente os dados de que precisa, evitando o carregamento excessivo ou insuficiente de informações (que é comum em APIs RESTful). Ideal para aplicações que precisam de dados específicos de várias fontes, como aplicações com interfaces dinâmicas e complexas.
+
+*-SOAP (Simple Object Access Protocol):* é um protocolo de comunicação baseado em XML que define uma maneira padronizada para enviar mensagens entre sistemas. Utilizado em setores que precisam de segurança avançada, como serviços financeiros, telecomunicações e grandes empresas.
+
+*-gRPC (Google Remote Procedure Call):* é um sistema de chamada de procedimento remoto (RPC) desenvolvido pelo Google. Ele facilita a criação de serviços distribuídos que podem se comunicar de maneira rápida e eficiente, utilizando chamadas de procedimento remoto (RPCs). O gRPC é ideal para comunicações de alto desempenho em sistemas distribuídos, como serviços backend em arquiteturas de microsserviços.
+
+*-WebSockets:* é uma tecnologia que permite comunicação bidirecional contínua entre um cliente e um servidor através de uma única conexão TCP. WebSockets são usados em aplicações onde a comunicação em tempo real é essencial, como aplicativos de mensagens instantâneas, notificações push e atualizações de dados em tempo real.
+
+Resumo das abordagens:
+
+=-=-= REST =-=-=
+*Características:*  Usa métodos HTTP e URLs para acessar recursos.
+*Vantagens:* Simples, escalável e amplamente adotado.
+*Casos de Uso:* Web, mobile apps, APIs abertas.
+
+=-=-= GraphQL =-=-=
+*Características:* Consulta precisa de dados com uma única requisição.
+*Vantagens:* Evita sobrecarga de dados e é flexível.
+*Casos de Uso:* Interfaces dinâmicas, aplicações com muitos dados.
+
+=-=-= SOAP =-=-=
+*Características:* Protocolo baseado em XML com regras estritas.
+*Vantagens:* Segurança robusta e confiável.
+*Casos de Uso:* Serviços financeiros, telecomunicações.
+
+=-=-= gRPC =-=-=
+*Características:* Comunicação binária com alta performance
+*Vantagens:* Rápido, eficiente e suporta streaming.
+*Casos de Uso:* Microsserviços, sistemas distribuídos.
+
+=-=-= WebSockets =-=-=
+*Características:* Conexão contínua para comunicação em tempo real.
+*Vantagens:* Reduz latência e é ideal para dados em tempo real.
+*Casos de Uso:* Chats, jogos online, sistemas de notificação.
+
