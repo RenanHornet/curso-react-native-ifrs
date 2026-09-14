@@ -1,0 +1,68 @@
+=== 3.5 Introdução ao Drawer Navigation === 
+
+O Drawer Navigation (ou navegação por menu lateral) é um padrão de navegação muito popular em aplicativos móveis e web, onde o usuário pode acessar um menu lateral deslizando a partir da borda da tela ou tocando em um ícone de menu (geralmente representado por três linhas horizontais, conhecido como "hambúrguer"). Esse tipo de navegação é útil para fornecer o acesso a diferentes seções do aplicativo sem ocupar muito espaço na interface principal.
+
+=-=-= Como funciona o Drawer Navigation =-=-=
+
+O Drawer Navigation é uma forma de navegação em que um painel desliza de um dos lados (geralmente da esquerda) da tela, mostrando opções de navegação. O painel pod ser fechado deslizando-0 de volta ou tocando fora da área do menu. Ele é uma escolha ideal para plicativos que têm muitas seções ou opções que não precisam estar constantemente visíveis. 
+Dentre os benefícios do Drawer Navigation, podemos destacar:
+
+*- Economia de espaço:* O menu lateral é ocupado por padrão, economizando espaço na tela e permitindo que o conteúdo principal do aplicativo seja o foco.
+
+*- Fácil acesso:* Fornece acesso rápido a múltiplas telas ou seções do aplicativo. 
+
+*- Estilo moderno:* É um padrão de design muito utilizado em aplicativos móveis e web modernos, sendo reconhecidos e facilmente compreendidos pelos usuários. 
+
+=-=-= Implementação do Tab Navigation com React Navigation =-=-=
+
+A biblioteca React Navigation é uma das mais populares para implementar o Drawer Navigation em aplicativos React Native. Ela oferece o Drawer Navigator, que facilita a criação de menus laterais com personalização.
+
+=-=-= Instalação do Pacote de Navegação =-=-=
+
+Primeiramente, precisamos instalar os pacotes necessários para o gerenciador de navegação escolhido. Logo, instale o pacote específico conforme abaixo:
+
+npm install @react-navigation/drawer
+npm install react-native-gesture-handler
+
+=-=-= Configuração básica do Drawer Navigator =-=-=
+
+Para não termos conflito com as telas desenvolvidas anteriormente, vamos adicionar toda a lógica de programação no arquivo principal do seu projeto (geralmente App.js):
+
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { View, Text } from 'react-native';
+    
+const Drawer = createDrawerNavigator();
+    
+function HomeScreen() {
+      return (
+        <View>
+          <Text>Home Screen</Text>
+        </View>
+      );
+}
+function ProfileScreen() {
+      return (
+        <View>
+          <Text>Profile Screen</Text>
+        </View>
+      );
+}
+    
+export default function App() {
+      return (
+        <NavigationContainer>
+          <Drawer.Navigator initialRouteName="Home">
+            <Drawer.Screen name="Home" component={HomeScreen} />
+            <Drawer.Screen name="Profile" component={ProfileScreen} />
+          </Drawer.Navigator>
+        </NavigationContainer>
+      );
+}
+
+Este código configura um aplicativo com um menu deslizante utilizando o Drawer Navigator da biblioteca React Navigation. O código começa importando React para permitir a criação de componentes, seguido da importação do NavigationContainer de @react-navigation/native para gerenciar o estado de navegação e do createDrawerNavigator de @react-navigation/drawer para criar a estrutura do Drawer Navigator. Além disso, View e Text são importados de react-native para compor a interface de usuário das telas.
+
+A função createDrawerNavigator() é usada para criar uma instância chamada Drawer, que define a navegação com abas deslizantes. São criados dois componentes funcionais, HomeScreen e ProfileScreen, que representam as telas e retornam uma View contendo um Text que descreve cada uma.
+
+No componente principal App, o NavigationContainer envolve o Drawer.Navigator, que gerencia a navegação e contém dois Drawer.Screen definindo as telas "Home" e "Profile" como opções de navegação. A propriedade initialRouteName especifica que a tela inicial será "Home". Quando o aplicativo é executado, o usuário pode acessar o menu deslizante para alternar entre as telas "Home" e "Profile", oferecendo uma experiência de navegação prática e intuitiva.
